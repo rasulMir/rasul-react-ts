@@ -4,7 +4,7 @@ import Main from './Main';
 
 interface Props {}
 
-export default function Episodes({}: Props) {
+export default function Simpsons({}: Props) {
 
 	const episodes: string[] = [
 		'homer',
@@ -19,15 +19,7 @@ export default function Episodes({}: Props) {
 	let back : string = '<- back';
 	return (
 		<div>
-			<Routes>
-				<Link to='/'>{back}</Link>
-				Episodes
-				<ul>
-					{episodes.map(episode => ( <li key={episode}>{episode}</li> ) )}
-				</ul>
-
-				<Route path='/' element={<Main/>}/>
-			</Routes>
+			episodes
 		</div>
 	)
 }
