@@ -35,19 +35,21 @@ export default function AboutPresident({}: Props) {
 	);
 
 	return (
-		<div className='wrapper'>
-			<BackButton path='/presidents'/>
-			<div className='items_wrap'>
-				<div className="about_president-wrap">
-					<img className='img' src={president.photo} alt={president.name} />
-					<div className="right-side">
-						<h3 className='txt'>{president.name}</h3>
-						<div className="txt">{president.ordinal} President by Count</div>
-						<div className="txt">{president.yearsInOffice}</div>
-						<div className="vice-pres">
-							Vice Presidents:
-							<div>
-								{president.vicePresidents.map(vice => <span key={vice} className='vice'>{vice}</span>)}
+		<div className="wrap">
+			<div className='wrapper'>
+				<BackButton/>
+				<div className='items_wrap'>
+					<div className="about_president-wrap">
+						<img className='img' src={president.photo} alt={president.name} />
+						<div className="right-side">
+							<h3 className='txt'>{president.name}</h3>
+							<div className="txt">{president.ordinal} President by Count</div>
+							<div className="txt">{president.yearsInOffice}</div>
+							<div className="vice-pres">
+								Vice Presidents:
+								<div>
+									{president.vicePresidents.map(vice => <span key={vice} className='vice'>{vice}</span>)}
+								</div>
 							</div>
 						</div>
 					</div>

@@ -39,11 +39,13 @@ export default function Presidents({}: Props) {
 	);
 
 	return (
-		<div className='wrapper'>
-			<BackButton path='/'/>
-			<h3 className='title'>Presidents</h3>
-			<div className='items_wrap'>
-				{ getPresidents() }
+		<div className="wrap">
+			<div className='wrapper'>
+				<BackButton/>
+				<h3 className='title'>Presidents</h3>
+				<div className='items_wrap'>
+					{ getPresidents() }
+				</div>
 			</div>
 		</div>
 	)

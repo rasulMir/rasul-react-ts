@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface Props {}
 
@@ -21,8 +21,21 @@ const Nav = (props: Props) => {
 						Route1
 					</NavLink>
 				</li>
+				<li>
+					<NavLink to='hooks' className={({isActive}) => (
+						isActive ? 'active item-nav' : 'item-nav'
+					)}>
+						Hooks
+					</NavLink>
+				</li>
+				<li>
+					<NavLink to='/pizza' className={({isActive}) => (
+						isActive ? 'active item-nav' : 'item-nav'
+					)}>
+						Pizza-Project
+					</NavLink>
+				</li>
 			</ul>
-			<Outlet/>
 		</div>
 	)
 }
