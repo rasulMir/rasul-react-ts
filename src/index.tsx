@@ -13,6 +13,8 @@ import './index.css';
 import Hooks from './hooks/Hooks';
 import PizzaMain from './pizza/PizzaMain';
 import Ingredients from './pizza/Ingredients';
+import Check from './pizza/Check';
+import Load from './pizza/Load';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -32,6 +34,8 @@ root.render(
 				<Route path='/pizza' element={<PizzaMain/>}>
 					<Route path='building' element={<Building/>}/>
 					<Route path='ingredients' element={<Ingredients/>}/>
+					<Route path='building/check' element={<Check/>}/>
+					<Route path='building/save' element={<Load/>} />
 				</Route>
 
 				<Route path='*' element={<NotFoundPage/>} />

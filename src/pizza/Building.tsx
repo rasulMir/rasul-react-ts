@@ -1,4 +1,4 @@
-import React, { ReactElement, useMemo, useReducer } from 'react';
+import React, { ReactElement, useMemo, useReducer, useState } from 'react';
 import AddProd from './AddProd';
 
 import pepperoni from './img/pepperoni.jpg';
@@ -11,6 +11,8 @@ import coldCuts from './img/cold-cuts.jpg';
 
 import reducer from './reducer';
 import { decrement, increment } from './actions';
+import { Link } from 'react-router-dom';
+import { json } from 'stream/consumers';
 
 interface Props {}
 
@@ -23,10 +25,9 @@ export interface ProdType {
 }
 
 export default function Building({}: Props) {
-	
+
 	const products = useMemo(() => {
 		const randId = () => Math.random().toString(36).substr(3,11);
-
 		return [
 			{ id : randId(), name : 'Cold cuts', price : 3, amount: 0, img : coldCuts},
 			{ id : randId(), name : 'pepperoni', price : 2.5, amount: 1, img : pepperoni},
@@ -37,8 +38,8 @@ export default function Building({}: Props) {
 			{ id : randId(), name : 'vegetables', price : .75, amount: 0, img : vegetables},
 		];
 	}, []);
-
 	let [ state, dispatch ] = useReducer(reducer, products);
+	let [code, setCode] = useState(false);
 
 	const getImgs = () => {
 		if (Array.isArray(state)) {
@@ -75,6 +76,23 @@ export default function Building({}: Props) {
 		else return <div>build your pizza</div>;
 	}
 
+	const load = ():void => {
+		let filtered = state.filter(item => item.amount);
+		localStorage.setItem('checkout', JSON.stringify(filtered));
+	}
+
+	const couponCode = () => {
+		const randCode = Math.random().toString(36).slice(2,12);
+		if (code) {
+			return(
+				<div className="code">
+					Your code is {randCode}
+				</div>
+			);
+		}
+		return <></>;
+	}
+
 	return (
 		<div className="container">
 			<div className='content'>
@@ -104,17 +122,28 @@ export default function Building({}: Props) {
 							<span>{ totalPrice() }$</span>
 						</div>
 						<div className="saving-order">
-							<button className="add-btn add-btn_green">save pizza</button>
-							<button className="add-btn add-btn_blue">checkout</button>
+							<button
+								className="add-btn add-btn_green"
+								onClick={()=> setCode(!code)}>
+									save pizza
+							</button>
+							<Link
+								to='check'
+								className="add-btn add-btn_blue"
+								>
+									checkout
+							</Link>
 						</div>
 						<div className="saving-order">
-							<button
+							<Link
 								className="add-btn add-btn_black"
+								to='save'
 								>
 								load pizza
-							</button>
+							</Link>
 						</div>
 					</div>
+					{couponCode()}
 				</div>
 			</div>
 		</div>
