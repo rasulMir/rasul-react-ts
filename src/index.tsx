@@ -8,13 +8,15 @@ import AboutPresident from './router1/AboutPresident';
 import Main from './router1/Main';
 import NotFoundPage from './NotFoundPage';
 import Building from './pizza/Building';
-
-import './index.css';
 import Hooks from './hooks/Hooks';
 import PizzaMain from './pizza/PizzaMain';
 import Ingredients from './pizza/Ingredients';
 import Check from './pizza/Check';
 import Load from './pizza/Load';
+
+import RoutesComp from './router/Routes';
+
+import './index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -23,7 +25,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-			<Routes>
+			{/* <Routes>
 				<Route path='/' element={<Nav/>}/>
 				<Route path='/router1' element={<Main/>}/>
 				<Route path='/router1/presidents' element={<Presidents/>}/>
@@ -39,7 +41,10 @@ root.render(
 				</Route>
 
 				<Route path='*' element={<NotFoundPage/>} />
-			</Routes>
+			</Routes> */}
+			<RoutesComp/>
+
+
 		</BrowserRouter>
   </React.StrictMode>
 );
