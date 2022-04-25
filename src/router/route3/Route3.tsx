@@ -16,7 +16,7 @@ export default function Route3({}: Props) {
 				if (i === 0) { return <Link to='/' key={url}>Home</Link> }
 				else if (i === 1) { return <Link to={url} key={url}>{ url }</Link> }
 				else { return <Link to={filtered[i - 1] + '/' + url} key={url}>{ url }</Link> }
-			}
+			})
 	}
 
 	return (
