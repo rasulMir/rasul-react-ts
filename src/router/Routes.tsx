@@ -7,6 +7,11 @@ import Route2 from './route2/Route2';
 import Register from './route2/Register';
 import Login from './route2/Login';
 import Write from './route2/Write';
+import Route3 from './route3/Route3';
+import Home from './route3/Home';
+import Users from './route3/Users';
+import Vasya from './route3/Vasya';
+import Peter from './route3/Peter';
 
 interface Props {}
 
@@ -27,6 +32,12 @@ export default function RoutesComp({}: Props) {
 				<Route path='*' element={<NotFoundPage/>} />
 			</Route>
 
+			<Route path='route3' element={<Route3/>}>
+				<Route index  element={<Home/>}/>
+				<Route path='users'  element={<Users/>}/>
+				<Route path='users/vasya'  element={<Vasya/>}/>
+				<Route path='users/peter'  element={<Peter/>}/>
+			</Route>
 
 		</Routes>
 	)

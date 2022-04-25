@@ -14,7 +14,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.route3 {
+	flex: 1 0;
+}
 
+.route3_active {
+	text-decoration: underline;
+}
 a {
 	text-decoration: none;
 }

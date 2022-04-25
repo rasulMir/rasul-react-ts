@@ -20,7 +20,7 @@ export default function Nav({}: Props) {
 					</Link>
 				</Button>
 				<Button variant="outlined" color="success">
-					<Link to='12'>
+					<Link to='route3'>
 						Router3
 					</Link>
 				</Button>
