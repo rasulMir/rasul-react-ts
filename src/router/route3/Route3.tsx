@@ -1,4 +1,4 @@
-import { Breadcrumbs, breadcrumbsClasses, Grid } from '@mui/material'
+import { Breadcrumbs, Grid, Typography } from '@mui/material'
 import React from 'react'
 import { Outlet, useLocation, Link } from 'react-router-dom'
 import Sidebar from './Sidebar'
@@ -10,13 +10,14 @@ export default function Route3({}: Props) {
 	let location = useLocation();
 
 	const breadCrumbsLinks = () => {
-		let filtered = location.pathname.split('/');
-		return filtered && filtered.map((url, i) => 
-			{
-				if (i === 0) { return <Link to='/' key={url}>Home</Link> }
-				else if (i === 1) { return <Link to={url} key={url}>{ url }</Link> }
-				else { return <Link to={filtered[i - 1] + '/' + url} key={url}>{ url }</Link> }
-			})
+		let filtered = location.pathname.split('/').filter((el) => el);
+		return filtered && filtered.map((url, i) => {
+			let last: boolean = i === filtered.length - 1;
+
+			return last ? 
+			<Typography key={url}>{url}</Typography> : 
+			<Link to={'/' + url} key={url}>{ url }</Link>;
+		});
 	}
 
 	return (
